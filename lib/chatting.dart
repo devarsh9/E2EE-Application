@@ -119,14 +119,10 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   readLocal() async {
-    //prefs = await SharedPreferences.getInstance();
-    // print(prefs);
-    print('udit');
     print(uid);
     print(uid.hashCode);
     print(peerId.hashCode);
     print('$uid-$peerId');
-    //id = prefs.getString('id') ?? '';
     if (uid.hashCode <= peerId.hashCode) {
       groupChatId = '$uid-$peerId';
     } else {
@@ -147,8 +143,6 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   void onSendMessage(String content, int type) {
-    // print('udit');
-    // print('bdvbbvvb');
     // type: 0 = text, 1 = image, 2 = sticker
     if (content.trim() != '') {
       textEditingController.clear();
@@ -345,27 +339,11 @@ class ChatScreenState extends State<ChatScreen> {
               buildInput(),
             ],
           ),
-
-          // Loading
-          //  buildLoading()
         ],
       ),
       onWillPop: onBackPress,
     );
   }
-
-  /*Widget buildLoading() {
-    return Positioned(
-      child: isLoading
-          ? Container(
-        child: Center(
-          child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(themeColor)),
-        ),
-        color: Colors.white.withOpacity(0.8),
-      )
-          : Container(),
-    );
-  }*/
   Widget buildInput() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 6.0),
@@ -451,14 +429,6 @@ class ChatScreenState extends State<ChatScreen> {
                 ...messages,
               ],
             );
-            //listMessage = snapshot.data.documents;
-//            return ListView.builder(
-//              padding: EdgeInsets.all(10.0),
-//              itemBuilder: (context, index) => buildItem(index, snapshot.data.documents[index]),
-//              itemCount: snapshot.data.documents.length,
-//              reverse: true,
-//             controller: listScrollController,
-//            );
           }
         },
       ),
